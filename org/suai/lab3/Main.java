@@ -19,6 +19,7 @@ public class Main {
         mirrorMatrixC.setElement(0, 0, 4);
         System.out.println("Matrix C: \n" + mirrorMatrixC);
 
+
         System.out.println("Matrix C * A: \n" + mirrorMatrixC.product(simpleMatrixA));
 
         System.out.println("C equals A?: " + mirrorMatrixC.equals(simpleMatrixA) + '\n');

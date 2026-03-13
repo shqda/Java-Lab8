@@ -16,13 +16,13 @@ public class Matrix {
 
         rows = r;
         cols = c;
-        data = new int[rows][cols];
+        data = new int[getRows()][getCols()];
     }
 
     public void fillMatrix(int val) {
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                data[i][j] = val;
+        for (int i = 0; i < getRows(); i++) {
+            for (int j = 0; j < getCols(); j++) {
+                setElement(i, j, val);
             }
         }
     }
@@ -36,9 +36,9 @@ public class Matrix {
             throw new BadMatrixSizesException("Index out of bounds: row and col must be > 0!\n");
         }
 
-        else if (r >= rows || c >= cols) {
+        else if (r >= getRows() || c >= getCols()) {
             throw new BadMatrixSizesException("Index out of bounds: position [" + r + "][" + c + "]" +
-                                      "does not exist in " + rows + "x" + cols +" matrix.");
+                                      "does not exist in " + getRows() + "x" + getCols() +" matrix.");
         }
     }
 
@@ -56,14 +56,15 @@ public class Matrix {
 
 
     public Matrix sum(Matrix other) throws MatrixException {
-        if (rows != other.rows || cols != other.cols) {
-            throw new MatrixException("Invalid matrix to sum: matrixs rows and cols must be the same\n");
+        if (getRows() != other.getRows() || getCols() != other.getCols()) {
+            throw new MatrixException("Invalid matrix to sum: matrix's rows and cols must be the same\n");
         }
 
-        Matrix newM = new Matrix(rows, cols);
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                newM.data[i][j] = data[i][j] + other.data[i][j];
+        Matrix newM = new Matrix(getRows(), getCols());
+        for (int i = 0; i < getRows(); i++) {
+            for (int j = 0; j < getCols(); j++) {
+                int sum = getElement(i, j) + other.getElement(i, j);
+                newM.setElement(i, j, sum);
             }
         }
 
@@ -72,23 +73,23 @@ public class Matrix {
 
 
     public Matrix product(Matrix other) throws MatrixException {
-        if (cols != other.rows) {
+        if (getCols() != other.getRows()) {
             throw new MatrixException(
                 "Incompatible matrix sizes: left matrix columns (" 
-                + cols + 
-                ") must match right matrix rows (" + other.rows + ")."
+                + getCols() +
+                ") must match right matrix rows (" + other.getRows() + ")."
             );
         }
 
-        Matrix newM = new Matrix(this.rows, other.cols);
+        Matrix newM = new Matrix(getRows(), other.getCols());
         
-        for (int i = 0; i < this.rows; i++) { 
-            for (int j = 0; j < other.cols; j++) { 
+        for (int i = 0; i < getRows(); i++) {
+            for (int j = 0; j < other.getCols(); j++) {
                 int sumVal = 0;
-                for (int k = 0; k < this.cols; k++) {
-                    sumVal += data[i][k] * other.data[k][j];
+                for (int k = 0; k < getCols(); k++) {
+                    sumVal += getElement(i, k) * other.getElement(k, j);
                 }
-                newM.data[i][j] = sumVal;
+                newM.setElement(i, j, sumVal);
             }
         }
         return newM;
@@ -100,7 +101,7 @@ public class Matrix {
         if (this == obj) return true;
         if (!(obj instanceof Matrix)) return false;
         Matrix other = (Matrix) obj;
-        return rows == other.rows && cols == other.cols && Arrays.deepEquals(data, other.data);
+        return getRows() == other.getRows() && getCols() == other.getCols() && Arrays.deepEquals(data, other.data);
     }
 
 
@@ -108,10 +109,10 @@ public class Matrix {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < rows; i++) {
+        for (int i = 0; i < getRows(); i++) {
             sb.append("[ ");
-            for (int j = 0; j < cols; j++) {
-                sb.append(data[i][j]).append(" ");
+            for (int j = 0; j < getCols(); j++) {
+                sb.append(getElement(i, j)).append(" ");
             }
             sb.append("]\n");
         }
