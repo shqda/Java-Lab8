@@ -5,8 +5,8 @@ import java.util.Arrays;
 
 
 public class Matrix {
-    protected final int rows;
-    protected final int cols;
+    protected int rows;
+    protected int cols;
     protected final int[][] data;
     
     public Matrix(int r, int c) throws MatrixException {
@@ -33,7 +33,7 @@ public class Matrix {
 
     protected void checkBounds(int r, int c) throws BadMatrixSizesException {
         if (r < 0 || c < 0) {
-            throw new BadMatrixSizesException("Index out of bounds: row and col must be > 0!\n");
+            throw new BadMatrixSizesException("Index out of bounds: row and col must be positive!\n");
         }
 
         else if (r >= getRows() || c >= getCols()) {

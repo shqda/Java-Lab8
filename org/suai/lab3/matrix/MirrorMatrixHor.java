@@ -7,12 +7,7 @@ public class MirrorMatrixHor extends Matrix {
 
     public MirrorMatrixHor(int rows, int cols)  {
         super((rows + 1) / 2, cols);
-    }
-
-    @Override
-    public int getRows() {
-        if (rows % 2 == 0) return rows * 2;
-        return rows * 2 - 1;
+        this.rows = rows;
     }
 
     @Override
@@ -28,7 +23,7 @@ public class MirrorMatrixHor extends Matrix {
     }
 
     private int mapRow(int row) {
-        if (row < rows) return row;
+        if (row < (rows + 1) / 2) return row;
         return getRows() - 1 - row;
     }
 
