@@ -1,7 +1,7 @@
 package org.suai.lab3.matrix;
 
 
-public class SquareMatrix extends Matrix {
+public class SquareMatrix extends UsualMatrix {
 
     public SquareMatrix(int size) {
         super(size, size);
