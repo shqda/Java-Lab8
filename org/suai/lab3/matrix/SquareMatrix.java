@@ -13,7 +13,7 @@ public class SquareMatrix extends UsualMatrix {
         }
     }
 
-    public SquareMatrix(Matrix other) throws MatrixException{
+    public SquareMatrix(final Matrix other) throws MatrixException{
         if (other.getRows() != other.getCols()) throw new MatrixException("rows and cols must be the same");
 
         super(other.getRows(), other.getCols());

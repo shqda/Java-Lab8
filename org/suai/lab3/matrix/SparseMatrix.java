@@ -15,7 +15,7 @@ public class SparseMatrix implements Matrix {
         this.cols = cols;
     }
 
-    public SparseMatrix(Matrix other) {
+    public SparseMatrix(final Matrix other) {
         if (other.getRows() != other.getCols()) throw new MatrixException("rows and cols must be the same");
 
         rows = other.getRows();
@@ -76,7 +76,7 @@ public class SparseMatrix implements Matrix {
     }
 
     @Override
-    public Matrix sum(Matrix other) throws MatrixException {
+    public Matrix sum(final Matrix other) throws MatrixException {
         if (getRows() != other.getRows() || getCols() != other.getCols()) {
             throw new MatrixException("Invalid matrix to sum: matrix's rows and cols must be the same\n");
         }
@@ -107,7 +107,7 @@ public class SparseMatrix implements Matrix {
     }
 
     @Override
-    public Matrix product(Matrix other) throws MatrixException {
+    public Matrix product(final Matrix other) throws MatrixException {
         if (getCols() != other.getRows()) {
             throw new MatrixException(
                     "Incompatible matrix sizes: left matrix columns (" + getCols() +
@@ -134,7 +134,7 @@ public class SparseMatrix implements Matrix {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
 
         if (!(o instanceof SparseMatrix other)) return false;

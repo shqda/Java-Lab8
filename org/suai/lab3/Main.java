@@ -39,7 +39,7 @@ public class Main {
         Matrix combineProd = usual1.product(sparse2);
         System.out.println();
 
-        System.out.println("usualSum == sparseSum == combineSum: " +
+        System.out.println("usualSum == sparseSum == combineSum: " + // тк они Matrix то все ок
                 (usualSum.equals(sparseSum) == usualSum.equals(combineSum)));
 
         System.out.println("usualProd == sparseProd == combineProd: " +

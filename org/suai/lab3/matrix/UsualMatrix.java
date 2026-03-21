@@ -19,7 +19,7 @@ public class UsualMatrix implements Matrix {
         data = new int[rows][cols];
     }
 
-    public UsualMatrix(Matrix other) {
+    public UsualMatrix(final Matrix other) {
         rows = other.getRows();
         cols = other.getCols();
         data = new int[rows][cols];
@@ -77,7 +77,7 @@ public class UsualMatrix implements Matrix {
     }
 
     @Override
-    public Matrix sum(Matrix other) throws MatrixException {
+    public Matrix sum(final Matrix other) throws MatrixException {
         if (getRows() != other.getRows() || getCols() != other.getCols()) {
             throw new MatrixException("Invalid matrix to sum: matrix's rows and cols must be the same\n");
         }
@@ -95,7 +95,7 @@ public class UsualMatrix implements Matrix {
 
 
     @Override
-    public Matrix product(Matrix other) throws MatrixException {
+    public Matrix product(final Matrix other) throws MatrixException {
         if (getCols() != other.getRows()) {
             throw new MatrixException(
                 "Incompatible matrix sizes: left matrix columns (" 
@@ -120,7 +120,7 @@ public class UsualMatrix implements Matrix {
 
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) return true;
 
         if (!(obj instanceof UsualMatrix other)) return false;
