@@ -2,20 +2,20 @@ package org.suai.lab3.matrix;
 
 public class MatrixGenerator {
 
-    public static Matrix generateUsualMatrix(int rows, int cols) {
-        Matrix m = new UsualMatrix(rows, cols);
+    public static UsualMatrix generateUsualMatrix(int rows, int cols) {
+        UsualMatrix m = new UsualMatrix(rows, cols);
         fill(m, rows, cols);
         return m;
     }
 
-    public static Matrix generateSparseMatrix(int rows, int cols) {
-        Matrix m = new UsualMatrix(rows, cols);
+    public static SparseMatrix generateSparseMatrix(int rows, int cols) {
+        SparseMatrix m = new SparseMatrix(rows, cols);
         fill(m, rows, cols);
         return m;
     }
 
-    public static Matrix generateSquareMatrix(int size) {
-        Matrix m = new SquareMatrix(size);
+    public static SquareMatrix generateSquareMatrix(int size) {
+        SquareMatrix m = new SquareMatrix(size);
         fill(m, size, size);
         return m;
     }
