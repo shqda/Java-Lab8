@@ -41,7 +41,7 @@ public class ParallelMatrixProduct {
         return result;
     }
 
-    private void close() {
+    public void close() {
         pool.shutdown();
     }
 
@@ -55,7 +55,7 @@ public class ParallelMatrixProduct {
         }
     }
 
-    private void computeRow(final UsualMatrix m1, final UsualMatrix m2, final UsualMatrix result, final int row) {
+    private void computeRow(final UsualMatrix m1, final UsualMatrix m2, final UsualMatrix result, int row) {
         for (int i = 0; i < m2.getCols(); i++) {
 
             int sum = 0;
