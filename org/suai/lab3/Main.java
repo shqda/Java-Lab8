@@ -13,14 +13,16 @@ public class Main {
         long start = System.nanoTime();
         Matrix singleThread = m1.product(m2);
         long end = System.nanoTime();
-        System.out.println("Time single: " + (end - start) / 1_000_000.0 + " ms");
+        System.out.println("Time single thread matrix prod: " + (end - start) / 1_000_000.0 + " ms");
 
-        ParallelMatrixProduct producter = new ParallelMatrixProduct(10);
+        int threadCnt = 2;
+        ParallelMatrixProduct producter = new ParallelMatrixProduct(threadCnt);
 
         start = System.nanoTime();
         Matrix multiThread = producter.product(m1, m2);
         end = System.nanoTime();
-        System.out.println("Time multi: " + (end - start) / 1_000_000.0 + " ms");
+        System.out.println("Time " + threadCnt + " threads matrix prod: " + (end - start) / 1_000_000.0 + " ms");
+        System.out.println();
 
         Random random = new Random();
 
@@ -42,6 +44,6 @@ public class Main {
         start = System.nanoTime();
         Sort.quicksort(data, threadCnt);
         end = System.nanoTime();
-        System.out.println("Time " + threadCnt + " thread sort: " + (end - start) / 1_000_000.0 + " ms");
+        System.out.println("Time " + threadCnt2 + " threads sort: " + (end - start) / 1_000_000.0 + " ms");
     }
 }
