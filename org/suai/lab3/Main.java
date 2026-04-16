@@ -40,9 +40,9 @@ public class Main {
             data[i] = random.nextInt(1000);
         }
 
-        int threadCnt = 4;
+        int threadCnt2 = 4;
         start = System.nanoTime();
-        Sort.quicksort(data, threadCnt);
+        Sort.quicksort(data, threadCnt2);
         end = System.nanoTime();
         System.out.println("Time " + threadCnt2 + " threads sort: " + (end - start) / 1_000_000.0 + " ms");
     }
